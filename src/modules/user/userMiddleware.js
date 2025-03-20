@@ -29,7 +29,7 @@ module.exports = {
     //Check user role
     checkUserRole : async(req, res, next)=>{
         const userRole = await userRoleSchema.findById({_id : req.body.userRole});
-        if(user){
+        if(userRole){
             req.userRole = userRole;
             next();
         }else{

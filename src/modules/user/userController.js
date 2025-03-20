@@ -62,17 +62,18 @@ module.exports = {
     editUserProfile : async(req, res)=>{
         try{
             const user = req.userAuth;
-            const {firstname, lastname, username} = req.body;
+            const {firstname, lastname, username, userRole} = req.body;
             const userDetails = {
                 firstname : firstname,
                 lastname : lastname,
                 username : username,
+                userRole : userRole,
                 createdAt : new Date(),
                 updatedAt : new Date(),
             }
             const result = await userServices.editUser(user._id, userDetails);
             if(result){
-                return res.status(200).json({statusCode : 200, message : "User edit succesfully"});
+                return res.status(200).json({statusCode : 200, data: result, message : "User edit succesfully"});
             }else{
                 return res.status(400).json({statusCode : 400, message : "Failed"});
             }

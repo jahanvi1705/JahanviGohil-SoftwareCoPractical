@@ -7,10 +7,12 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('../src/modules/user/userRoute');
 var userRoleRouter = require('../src/modules/role/roleRoute');
+var userAccessRouter = require('../src/modules/access/accessRoute');
 const dotenv = require('dotenv');
 const mongoConnect = require("../src/config/dbConnection");
 const userCollection = require("../src/modules/user/userModel");
 const userRoleCollection = require("../src/modules/role/roleModel");
+const userAccessModCollection = require("../src/modules/access/accessModel");
 
 dotenv.config();
 var app = express();
@@ -28,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/users-role', userRoleRouter);
+app.use('/api/users-acess-mod', userAccessRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

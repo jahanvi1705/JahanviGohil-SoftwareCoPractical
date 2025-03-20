@@ -5,6 +5,7 @@ const acessSchema = new Schema(
     {
         moduleName : {
             type : String,
+            unique : true
         },
         active : {
             type : Boolean,
@@ -21,4 +22,4 @@ const acessSchema = new Schema(
 
 const Access = mongoose.model('access_module', acessSchema);
 
-module.exports = Access;
+module.exports = Access;    
